@@ -1,0 +1,14 @@
+{
+  "name": "websocket-tutorial",
+  "version": "1.0.0",
+  "description": "WebSocket 常见功能教学示例",
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}

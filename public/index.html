@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebSocket 教学实验室</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>WebSocket 教学实验室</h1>
+    <p>打开多个浏览器标签页，用不同昵称连接，体验广播、房间、私聊、心跳与重连。</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel connection">
+      <h2>1. 连接</h2>
+      <label>昵称 <input id="name" value="小明" /></label>
+      <label>房间 <input id="room" value="general" /></label>
+      <div class="row">
+        <button id="btnConnect">连接</button>
+        <button id="btnDisconnect" disabled>断开</button>
+        <span id="status" class="badge offline">未连接</span>
+      </div>
+      <p class="hint">WebSocket URL 示例：<code id="wsUrl"></code></p>
+    </section>
+
+    <section class="panel">
+      <h2>2. 发送消息</h2>
+      <textarea id="chatInput" rows="2" placeholder="输入聊天内容…"></textarea>
+      <div class="row">
+        <button id="btnChat" disabled>广播聊天 (JSON)</button>
+        <button id="btnRoom" disabled>房间消息</button>
+        <button id="btnPlain" disabled>纯文本发送</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>3. 私聊 & 用户列表</h2>
+      <label>对方 ID <input id="privateTo" placeholder="从右侧日志复制 user id" /></label>
+      <input id="privateText" placeholder="私聊内容" />
+      <div class="row">
+        <button id="btnPrivate" disabled>发送私聊</button>
+        <button id="btnListUsers" disabled>刷新在线用户</button>
+        <button id="btnAppPing" disabled>应用层 ping</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>4. 二进制 & 重连</h2>
+      <div class="row">
+        <button id="btnBinary" disabled>发送二进制</button>
+        <button id="btnReconnect" disabled>模拟断线重连</button>
+      </div>
+      <label class="checkbox">
+        <input type="checkbox" id="autoReconnect" checked />
+        断线后自动重连（指数退避，最多 5 次）
+      </label>
+    </section>
+
+    <section class="panel log-panel">
+      <h2>消息日志</h2>
+      <button id="btnClearLog" type="button">清空</button>
+      <pre id="log"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>学习要点见项目 <code>README.md</code>。服务端代码：<code>server/index.js</code></p>
+  </footer>
+
+  <script src="client.js"></script>
+</body>
+</html>
